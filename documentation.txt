@@ -33,17 +33,10 @@ CREATE TABLE products (
     product_name VARCHAR(50) NOT NULL,
     price DECIMAL(13,2) NOT NULL,
     description TEXT,
+    inventory INT DEFAULT 0, 
     date_created TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE cart_items (
-    id SERIAL PRIMARY KEY,
-    user_id INT REFERENCES users(id) ON DELETE CASCADE,
-    product_id INT REFERENCES products(id) ON DELETE CASCADE,
-    quantity INT NOT NULL,
-    date_added TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    date_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,  
-);
 
 CREATE TABLE orders (
     id SERIAL PRIMARY KEY,
@@ -52,16 +45,22 @@ CREATE TABLE orders (
     status VARCHAR(20) DEFAULT 'Pending',
     total_amount DECIMAL(13,2) NOT NULL,
     shipping_address TEXT,
-    billing_address TEXT
+    billing_address TEXT,
+    payment_id INT   
 );
 
-CREATE TABLE order_items (
+CREATE TABLE payments (
     id SERIAL PRIMARY KEY,
-    order_id INT REFERENCES orders(id) ON DELETE CASCADE,
-    product_id INT REFERENCES products(id) ON DELETE CASCADE,
-    quantity INT NOT NULL,
-    price DECIMAL(13,2) NOT NULL
+    order_id INT REFERENCES orders(id) ON DELETE CASCADE,  
+    amount DECIMAL(13,2) NOT NULL,
+    payment_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    payment_method VARCHAR(50) NOT NULL,  
+    status VARCHAR(20) DEFAULT 'Pending', 
+    transaction_id VARCHAR(255),  
+    details JSONB  
 );
+
+
 
 
 
