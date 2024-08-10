@@ -1,3 +1,11 @@
+
+base_url : "https://eshopify-ab01fd960199.herokuapp.com"
+Platform Deployed: Github / Heroku
+Database: Posgresql
+Authentication: JsonWebToken
+
+Db Schema
+
 -- Admin Table
 CREATE TABLE admin (
     id SERIAL PRIMARY KEY,
@@ -68,9 +76,8 @@ CREATE TABLE payments (
 
 
 ----------------------------------------------------------------
-API Documentation
+API Endpoints
 
-base_url = "https://eshopify-ab01fd960199.herokuapp.com"
 
 
 
