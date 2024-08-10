@@ -11,7 +11,9 @@ const pool = new Pool({
     max: POOL_MAX,
     idleTimeoutMillis: IDLE_TIMEOUT,
     connectionTimeoutMillis: CONNECTION_TIMEOUT,
-    // ssl: true
+    ssl: {
+        rejectUnauthorized: false
+    }
 });
 
 module.exports = pool;
