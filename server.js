@@ -5,6 +5,13 @@ const cookieParser = require('cookie-parser');
 const errorHandler = require('./src/middleware/errorHandler');
 const authRoutes = require('./src/routes/authRoutes');
 const adminRoutes = require('./src/routes/adminRoutes');
+const categoryRoutes = require('./src/routes/categoryRoutes');
+const orderRoutes = require('./src/routes/orderRoutes');
+const productRoutes = require('./src/routes/productRoutes');
+const paymentRoutes = require('./src/routes/paymentRoutes');
+
+
+
 
 const port = PORT;
 const app = express();
@@ -24,6 +31,16 @@ app.use('/admin', adminRoutes);
 
 // Endpoint for user auth routes
 app.use('/auth', authRoutes);
+
+app.use('/categories', categoryRoutes);
+
+app.use('/products', productRoutes);
+
+app.use('/orders', orderRoutes);
+
+app.use('/payments', paymentRoutes);
+
+
 
 
 

@@ -70,7 +70,7 @@ CREATE TABLE payments (
 ----------------------------------------------------------------
 API Documentation
 
-base_url = 
+base_url = "https://eshopify-ab01fd960199.herokuapp.com"
 
 
 
@@ -122,5 +122,610 @@ Login Admin
     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbklkIjoxLCJhZG1pblJvbGUiOiJhZG1pbiIsImlhdCI6MTcyMzExNzQ4MiwiZXhwIjoxNzIzMTIxMDgyfQ.GqL44BIMUPoWeRzjGAMnMh2wtRIcTkm6kFOZLvkSUPA",
     "role": "admin"
 }
+
+######################################################################
+
+
+- Category Endpoints
+
+Create Category
+
+# Endpoint:{base_url}/categories
+# Method: POST
+
+# Sample Request
+
+{
+    "category_name": "Electronics",
+    "description": "Devices and gadgets"
+}
+
+
+# Sample Response
+
+{
+    "message": "Category created successfully",
+    "category": {
+        "id": 1,
+        "category_name": "Electronics",
+        "description": "Devices and gadgets",
+        "date_created": "2024-08-10T00:00:00Z"
+    }
+}
+
+
+######################################################################
+
+Get All Categories
+
+# Endpoint:{base_url}/categories
+# Method: GET
+
+
+# Sample Response
+
+[
+    {
+        "id": 1,
+        "category_name": "Electronics",
+        "description": "Devices and gadgets",
+        "date_created": "2024-08-10T00:00:00Z"
+    },
+    {
+        "id": 2,
+        "category_name": "Books",
+        "description": "Various genres of books",
+        "date_created": "2024-08-10T00:00:00Z"
+    }
+]
+
+
+
+######################################################################
+
+
+Get Category by ID
+
+# Endpoint:{base_url}/categories/:id
+# Method: GET
+
+Sample Request
+URL Parameter: id = 1
+
+
+# Sample Response
+
+{
+    "id": 1,
+    "category_name": "Electronics",
+    "description": "Devices and gadgets",
+    "date_created": "2024-08-10T00:00:00Z"
+}
+
+
+
+
+######################################################################
+
+
+Update Category by ID
+
+Create Category
+
+# Endpoint:{base_url}/categories/:id
+# Method: PUT
+
+# Sample Request
+
+{
+    "category_name": "Electronics & Gadgets",
+    "description": "Updated description"
+}
+
+
+# Sample Response
+
+{
+    "message": "Category updated successfully",
+    "category": {
+        "id": 1,
+        "category_name": "Electronics & Gadgets",
+        "description": "Updated description",
+        "date_created": "2024-08-10T00:00:00Z"
+    }
+}
+
+
+######################################################################
+
+Delete Category by ID
+
+Create Category
+
+# Endpoint:{base_url}/categories/:id
+# Method: DELETE
+
+
+# Sample Response
+
+{
+    "message": "Category deleted successfully"
+}
+
+
+
+######################################################################
+
+
+- Product Endpoints
+
+Create Product
+
+
+# Endpoint:{base_url}/products
+# Method: POST
+
+# Sample Request
+
+{
+    "category_id": 1,
+    "product_name": "Smartphone",
+    "price": 699.99,
+    "description": "Latest model with high specs",
+    "inventory": 50
+}
+
+
+# Sample Response
+
+{
+    "message": "Product created successfully",
+    "product": {
+        "id": 1,
+        "category_id": 1,
+        "product_name": "Smartphone",
+        "price": 699.99,
+        "description": "Latest model with high specs",
+        "inventory": 50,
+        "date_created": "2024-08-10T00:00:00Z"
+    }
+}
+
+
+
+######################################################################
+
+
+Get All products
+
+# Endpoint:{base_url}/products
+# Method: GET
+
+
+# Sample Response
+
+[
+    {
+        "id": 1,
+        "category_id": 1,
+        "product_name": "Smartphone",
+        "price": 699.99,
+        "description": "Latest model with high specs",
+        "inventory": 50,
+        "date_created": "2024-08-10T00:00:00Z"
+    },
+    {
+        "id": 2,
+        "category_id": 2,
+        "product_name": "Novel",
+        "price": 19.99,
+        "description": "A thrilling novel",
+        "inventory": 100,
+        "date_created": "2024-08-10T00:00:00Z"
+    }
+]
+
+
+
+
+######################################################################
+
+
+Get Product by ID
+
+# Endpoint:{base_url}/products/:id
+# Method: GET
+
+
+# Sample Response
+
+{
+    "id": 1,
+    "category_id": 1,
+    "product_name": "Smartphone",
+    "price": 699.99,
+    "description": "Latest model with high specs",
+    "inventory": 50,
+    "date_created": "2024-08-10T00:00:00Z"
+}
+
+
+
+
+######################################################################
+
+
+Update Product by ID
+
+
+
+# Endpoint:{base_url}/categories/:id
+# Method: PUT
+
+# Sample Request
+
+{
+    "category_id": 1,
+    "product_name": "Smartphone Pro",
+    "price": 799.99,
+    "description": "Updated model with additional features",
+    "inventory": 30
+}
+
+
+
+# Sample Response
+
+{
+    "message": "Product updated successfully",
+    "product": {
+        "id": 1,
+        "category_id": 1,
+        "product_name": "Smartphone Pro",
+        "price": 799.99,
+        "description": "Updated model with additional features",
+        "inventory": 30,
+        "date_created": "2024-08-10T00:00:00Z"
+    }
+}
+
+
+
+######################################################################
+
+
+Delete Product by ID
+
+
+
+# Endpoint:{base_url}/products/:id
+# Method: DELETE
+
+
+# Sample Response
+
+{
+    "message": "Product deleted successfully"
+}
+
+
+
+######################################################################
+
+
+- Order Endpoints
+
+Create Order
+
+# Endpoint:{base_url}/orders
+# Method: POST
+
+# Sample Request
+
+{
+    "user_id": 1,
+    "total_amount": 719.98,
+    "status": "Pending",
+    "shipping_address": "123 Main St, Anytown, USA",
+    "billing_address": "123 Main St, Anytown, USA",
+    "payment_id": 1
+}
+
+
+
+# Sample Response
+
+{
+    "message": "Order created successfully",
+    "order": {
+        "id": 1,
+        "user_id": 1,
+        "order_date": "2024-08-10T00:00:00Z",
+        "status": "Pending",
+        "total_amount": 719.98,
+        "shipping_address": "123 Main St, Anytown, USA",
+        "billing_address": "123 Main St, Anytown, USA",
+        "payment_id": 1
+    }
+}
+
+
+
+######################################################################
+
+
+Get All Orders
+
+# Endpoint:{base_url}/orders
+# Method: GET
+
+
+# Sample Response
+
+[
+    {
+        "id": 1,
+        "user_id": 1,
+        "order_date": "2024-08-10T00:00:00Z",
+        "status": "Pending",
+        "total_amount": 719.98,
+        "shipping_address": "123 Main St, Anytown, USA",
+        "billing_address": "123 Main St, Anytown, USA",
+        "payment_id": 1
+    }
+]
+
+
+
+
+######################################################################
+
+
+Get Order by ID
+
+# Endpoint:{base_url}/orders/:id
+# Method: GET
+
+
+# Sample Response
+
+{
+    "id": 1,
+    "user_id": 1,
+    "order_date": "2024-08-10T00:00:00Z",
+    "status": "Pending",
+    "total_amount": 719.98,
+    "shipping_address": "123 Main St, Anytown, USA",
+    "billing_address": "123 Main St, Anytown, USA",
+    "payment_id": 1
+}
+
+
+
+
+######################################################################
+
+
+Update Order by ID
+
+
+
+# Endpoint:{base_url}/orders/:id
+# Method: PUT
+
+# Sample Request
+
+{
+    "status": "Shipped",
+    "shipping_address": "456 Elm St, Anytown, USA"
+}
+
+
+
+# Sample Response
+
+{
+    "message": "Order updated successfully",
+    "order": {
+        "id": 1,
+        "user_id": 1,
+        "order_date": "2024-08-10T00:00:00Z",
+        "status": "Shipped",
+        "total_amount": 719.98,
+        "shipping_address": "456 Elm St, Anytown, USA",
+        "billing_address": "123 Main St, Anytown, USA",
+        "payment_id": 1
+    }
+}
+
+
+
+######################################################################
+
+
+Delete Order by ID
+
+
+
+# Endpoint:{base_url}/orders/:id
+# Method: DELETE
+
+
+# Sample Response
+
+{
+    "message": "Order deleted successfully"
+}
+
+
+
+######################################################################
+
+
+
+- Payment Endpoints
+
+Create Payment
+
+# Endpoint:{base_url}/payments
+# Method: POST
+
+# Sample Request
+
+{
+    "order_id": 1,
+    "amount": 719.98,
+    "payment_method": "Credit Card",
+    "status": "Completed",
+    "transaction_id": "abc123xyz",
+    "details": {
+        "card_last_four": "1234",
+        "payment_gateway": "Stripe"
+    }
+}
+
+
+
+
+# Sample Response
+
+{
+    "message": "Payment created successfully",
+    "payment": {
+        "id": 1,
+        "order_id": 1,
+        "amount": 719.98,
+        "payment_date": "2024-08-10T00:00:00Z",
+        "payment_method": "Credit Card",
+        "status": "Completed",
+        "transaction_id": "abc123xyz",
+        "details": {
+            "card_last_four": "1234",
+            "payment_gateway": "Stripe"
+        }
+    }
+}
+
+
+
+
+######################################################################
+
+
+Get All Payments
+
+# Endpoint:{base_url}/payments
+# Method: GET
+
+
+# Sample Response
+
+[
+    {
+        "id": 1,
+        "order_id": 1,
+        "amount": 719.98,
+        "payment_date": "2024-08-10T00:00:00Z",
+        "payment_method": "Credit Card",
+        "status": "Completed",
+        "transaction_id": "abc123xyz",
+        "details": {
+            "card_last_four": "1234",
+            "payment_gateway": "Stripe"
+        }
+    }
+]
+
+
+
+
+######################################################################
+
+
+Get Payment by ID
+
+# Endpoint:{base_url}/payments/:id
+# Method: GET
+
+
+# Sample Response
+
+{
+    "id": 1,
+    "order_id": 1,
+    "amount": 719.98,
+    "payment_date": "2024-08-10T00:00:00Z",
+    "payment_method": "Credit Card",
+    "status": "Completed",
+    "transaction_id": "abc123xyz",
+    "details": {
+        "card_last_four": "1234",
+        "payment_gateway": "Stripe"
+    }
+}
+
+
+
+
+
+######################################################################
+
+
+Update Payment by ID
+
+
+
+# Endpoint:{base_url}/payments/:id
+# Method: PUT
+
+# Sample Request
+
+{
+    "amount": 699.99,
+    "status": "Refunded"
+}
+
+
+
+# Sample Response
+
+{
+    "message": "Payment updated successfully",
+    "payment": {
+        "id": 1,
+        "order_id": 1,
+        "amount": 699.99,
+        "payment_date": "2024-08-10T00:00:00Z",
+        "payment_method": "Credit Card",
+        "status": "Refunded",
+        "transaction_id": "abc123xyz",
+        "details": {
+            "card_last_four": "1234",
+            "payment_gateway": "Stripe"
+        }
+    }
+}
+
+
+
+
+######################################################################
+
+
+Delete Payment by ID
+
+
+# Endpoint:{base_url}/payments/:id
+# Method: DELETE
+
+
+# Sample Response
+
+{
+    "message": "Payment deleted successfully"
+}
+
+
+
 
 ######################################################################
