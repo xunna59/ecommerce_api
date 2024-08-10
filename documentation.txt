@@ -126,6 +126,63 @@ Login Admin
 ######################################################################
 
 
+Register User
+# Endpoint: {base_url}/auth/register
+# Method: POST
+
+# Sample Request
+
+{
+    "username": "xunna",
+    "firstname": "John",
+    "lastname": "Doe",
+    "email": "admin@example.com",
+    "gender": "male",
+    "password": "zxcvbnm"
+}
+
+# Sample Response
+
+{
+    "success": true,
+    "message": "Admin created successfully",
+    "admin": {
+        "id": 1,
+        "username": "xunna",
+        "firstname": "John",
+        "lastname": "Doe",
+        "email": "xunna@example.com",
+        "gender": "male",
+        "password": "$2a$10$oCsSmq75H9HTFIZz5jgiM.oaeCkB/8Pi1tHKn8Qx7Dk6K/R9jwFsq",
+        "date_created": "2024-08-08T11:40:49.730Z"
+    }
+}
+
+#####################################################################
+
+
+Login User
+# Endpoint: {base_url}/auth/login
+# Method: POST
+
+# Sample Request
+
+{
+      "email": "xunna@example.com",
+    "password": "zxcvbnm"
+}
+
+# Sample Response
+
+{
+    "message": "Login successful",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbklkIjoxLCJhZG1pblJvbGUiOiJhZG1pbiIsImlhdCI6MTcyMzExNzQ4MiwiZXhwIjoxNzIzMTIxMDgyfQ.GqL44BIMUPoWeRzjGAMnMh2wtRIcTkm6kFOZLvkSUPA"
+   
+}
+
+######################################################################
+
+
 - Category Endpoints
 
 Create Category

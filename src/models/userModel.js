@@ -2,11 +2,11 @@ const pool = require('../config/db_config');
 
 class UserModel {
     // Create a new user Function
-    async createUser(first_name, last_name, email, password) {
+    async createUser(username, first_name, last_name, email, gender, password) {
         try {
             const result = await pool.query(
-                'INSERT INTO users (username, email, password, dob, gender) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *',
-                [first_name, last_name, email, password]
+                'INSERT INTO users (username, first_name, last_name, email, gender, password) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *',
+                [username, first_name, last_name, email, gender, password]
             );
             return result.rows[0];
         } catch (error) {
@@ -30,7 +30,7 @@ class UserModel {
     async findById(id) {
         try {
             const result = await pool.query(
-                'SELECT id, username, email, dob, gender, date_created FROM users WHERE id = $1',
+                'SELECT id, username, first_name, last_name, email, gender, date_created FROM users WHERE id = $1',
                 [id]
             );
             return result.rows[0];

@@ -15,11 +15,11 @@ const register = async (req, res, next) => {
         return res.status(400).json({ success: false, message: errorMessage });
     }
     // Proceed with request if no errors are found during validation
-    const { username, email, password, dob, gender } = req.body;
+    const { username, first_name, last_name, email, gender, password } = req.body;
     const hashedPassword = await bcrypt.hash(password, 10);
 
     try {
-        const user = await userModel.createUser(username, email, hashedPassword, dob, gender);
+        const user = await userModel.createUser(username, first_name, last_name, email, gender, hashedPassword);
         res.status(201).json({ success: true, message: 'User created successfully', user });
     } catch (error) {
         next(error);
